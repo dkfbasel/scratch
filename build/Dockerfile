@@ -10,7 +10,7 @@ RUN apk add --no-cache ca-certificates
 RUN mkdir /dkfbasel
 
 # COPY THE REQUIRED FILES INTO THE CONTAINER
-ADD server /dkfbasel
+ADD bin /dkfbasel/bin
 ADD templates /dkfbasel/templates
 ADD public /dkfbasel/public
 
@@ -25,4 +25,4 @@ WORKDIR /dkfbasel
 
 # START THE APPLICATION WITH THE CONTAINER
 # TODO: add the name of the binary to start
-# CMD ["/dkfbasel/[NAME OF THE BINARY]"]
+CMD ["/dkfbasel/bind/[NAME OF THE BINARY]"]
