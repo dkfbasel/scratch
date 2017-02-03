@@ -21,7 +21,8 @@ Directory Structure
 Golang Tools
 ------------
 All golang packages should be vendored in the src/backend/vendor folder.
-Govendor (github.com/kardianos/govendor) should be used to vendor all go package dependencies until an official vendoring solution is available.
+Govendor (github.com/kardianos/govendor) should be used to vendor all go package
+dependencies until an official vendoring solution is available.
 
 Tests should be created in respective test files and should employ the package
 github.com/smartystreets/goconvey.
@@ -73,10 +74,10 @@ node_modules.
 Version-Control
 ---------------
 Git should be used for all directories as version control system. The branching
-should follow the git-flow model (http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/). All production
-releases should be integrated in the master branch and be given a respective tag.
-Tags should follow semantic versioning (i.e. major.minor.patch). In addition,
-a high level description of the changes should be added to every tag.
+should follow the git-flow model (http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/).
+All production releases should be integrated in the master branch and be given a
+respective tag. Tags should follow semantic versioning (i.e. major.minor.patch).
+In addition, a high level description of the changes should be added to every tag.
 
 
 Project Description
