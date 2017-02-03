@@ -15,6 +15,18 @@
 			"revisionTime": "2017-01-13T15:44:04Z"
 		},
 		{
+			"checksumSHA1": "aDhEeV1UWlP5ws+5zUmerFBlzZA=",
+			"path": "github.com/uber-go/atomic",
+			"revision": "3b8db5e93c4c02efbc313e17b2e796b0914a01fb",
+			"revisionTime": "2016-12-15T19:56:52Z"
+		},
+		{
+			"checksumSHA1": "8qiz8ci5DhEdZdIGSRT1hwXqZ40=",
+			"path": "github.com/uber-go/zap",
+			"revision": "a5783ee4b216a927da8f839c45cfbf9d694e1467",
+			"revisionTime": "2016-12-22T04:03:04Z"
+		},
+		{
 			"checksumSHA1": "MGk7cSnHqiL5soaovzgcJaNH3fc=",
 			"path": "gopkg.in/yaml.v1",
 			"revision": "9f9df34309c04878acc86042b16630b0f696e1de",

@@ -1,9 +1,10 @@
 package main
 
-import "fmt"
+import "github.com/uber-go/zap"
 
 func main() {
 
-	fmt.Println("this is the server startup code")
+	logger := zap.New(zap.NewJSONEncoder(zap.NoTime()))
+	logger.Info("This is the starting point of the application")
 
 }
