@@ -15,16 +15,16 @@ services:
             - ./backend:/app
 
         environment:
-            - PROJECT=bitbucket.org/dkfbasel/[BINARY]
-            - DIRECTORY=.
+            - PROJECT=bitbucket.org/dkfbasel/scratch/src/backend
+            - HOST=0.0.0.0:80
 
-    frontend:
-        image: dkfbasel/hot-reload-webpack:2.1.0
-        networks: [dkfbasel]
-        ports:
-            - 3000:3000
-        volumes:
-            - ./frontend:/app
-        environment:
-            - DIRECTORY=.
-            - COMMAND=npm run dev
+    # frontend:
+    #     image: dkfbasel/hot-reload-webpack:2.2.0
+    #     networks: [dkfbasel]
+    #     ports:
+    #         - 3000:3000
+    #     volumes:
+    #         - ./frontend:/app
+    #     environment:
+    #         - DIRECTORY=.
+    #         - COMMAND=npm run dev
