@@ -3,7 +3,8 @@ var webpack = require('webpack');
 var poststylus = require('poststylus');
 var autoprefixer = require('autoprefixer');
 
-// TODO: add includes
+// note: we prefer using includes over excludes, as this will give us finer
+// control over what is actually transpiled
 var appDirectory = path.resolve(__dirname, 'app');
 var includes = [appDirectory];
 
