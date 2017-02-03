@@ -1,0 +1,30 @@
+version: '2'
+
+networks:
+    dkfbasel:
+        external: true
+
+services:
+
+    api:
+        image: dkfbasel/hot-reload-go:1.2.0
+        networks: [dkfbasel]
+        ports:
+            - 3002:80
+        volumes:
+            - ./backend:/app
+
+        environment:
+            - PROJECT=bitbucket.org/dkfbasel/[BINARY]
+            - DIRECTORY=.
+
+    frontend:
+        image: dkfbasel/hot-reload-webpack:2.1.0
+        networks: [dkfbasel]
+        ports:
+            - 3000:3000
+        volumes:
+            - ./frontend:/app
+        environment:
+            - DIRECTORY=.
+            - COMMAND=npm run dev
