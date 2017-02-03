@@ -13,14 +13,12 @@ type Items struct {
 	// define a global logger
 	Logger zap.Logger
 
-	// define a global database
-	SampleDB repository.SampleDBInterface
-
 	// make the configuration available globally
 	Config Configuration
-}
 
-// func withEnv(env Environment, echo.HandlerFunc)
+	// define a global database
+	SampleDB repository.SampleDBInterface
+}
 
 // --- Basic application configuration ---
 

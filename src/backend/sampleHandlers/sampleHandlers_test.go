@@ -64,7 +64,6 @@ func TestSampleHandlers(t *testing.T) {
 
 			getHandler := sampleHandlers.GetSample(env)
 			err := getHandler(ctx)
-
 			So(err, ShouldBeNil)
 			So(recorder.Body.String(), ShouldBeEmpty)
 
