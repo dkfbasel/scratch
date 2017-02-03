@@ -9,10 +9,70 @@
 			"revisionTime": "2016-07-17T15:07:09Z"
 		},
 		{
+			"checksumSHA1": "2Fy1Y6Z3lRRX1891WF/+HT4XS2I=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "2268707a8f0843315e2004ee4f1d021dc08baedf",
+			"revisionTime": "2017-02-01T22:58:49Z"
+		},
+		{
 			"checksumSHA1": "ei/FyAed4h941oj3zucBQx6NNEA=",
 			"path": "github.com/jinzhu/configor",
 			"revision": "b7df2005e02e9226447139012db968eda90a4b91",
 			"revisionTime": "2017-01-13T15:44:04Z"
+		},
+		{
+			"checksumSHA1": "qUd2AA/+1E7WacQ/2pNaSiU8azM=",
+			"path": "github.com/labstack/echo",
+			"revision": "a8b6864be328fcb5c2d96d32c75b750f84e0e4be",
+			"revisionTime": "2017-02-02T19:50:17Z"
+		},
+		{
+			"checksumSHA1": "22chhTocVf44fcbgok8GNzJMFK8=",
+			"path": "github.com/labstack/echo/middleware",
+			"revision": "a8b6864be328fcb5c2d96d32c75b750f84e0e4be",
+			"revisionTime": "2017-02-02T19:50:17Z"
+		},
+		{
+			"checksumSHA1": "NvfQq6Y6kh9cMw+y1m00ivEd5b4=",
+			"path": "github.com/labstack/gommon/bytes",
+			"revision": "f72d3c883f8ea180da8f085dd320804c41332ad1",
+			"revisionTime": "2017-01-12T04:03:50Z"
+		},
+		{
+			"checksumSHA1": "R6DzcBLEP0BONPpsyr+11N7xh5w=",
+			"path": "github.com/labstack/gommon/color",
+			"revision": "f72d3c883f8ea180da8f085dd320804c41332ad1",
+			"revisionTime": "2017-01-12T04:03:50Z"
+		},
+		{
+			"checksumSHA1": "uHA6zbtxzJce4r+6uk8zu11qkuk=",
+			"path": "github.com/labstack/gommon/log",
+			"revision": "f72d3c883f8ea180da8f085dd320804c41332ad1",
+			"revisionTime": "2017-01-12T04:03:50Z"
+		},
+		{
+			"checksumSHA1": "XvsHo25Kr69E5xxTDatXzCQc6sI=",
+			"path": "github.com/labstack/gommon/random",
+			"revision": "f72d3c883f8ea180da8f085dd320804c41332ad1",
+			"revisionTime": "2017-01-12T04:03:50Z"
+		},
+		{
+			"checksumSHA1": "I4njd26dG5hxFT2nawuByM4pxzY=",
+			"path": "github.com/mattn/go-colorable",
+			"revision": "d228849504861217f796da67fae4f6e347643f15",
+			"revisionTime": "2016-11-03T16:00:40Z"
+		},
+		{
+			"checksumSHA1": "xZuhljnmBysJPta/lMyYmJdujCg=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "30a891c33c7cde7b02a981314b4228ec99380cca",
+			"revisionTime": "2016-11-23T14:36:37Z"
+		},
+		{
+			"checksumSHA1": "ynJSWoF6v+3zMnh9R0QmmG6iGV8=",
+			"path": "github.com/pkg/errors",
+			"revision": "248dadf4e9068a0b3e79f02ed0a610d935de5302",
+			"revisionTime": "2016-10-29T09:36:37Z"
 		},
 		{
 			"checksumSHA1": "aDhEeV1UWlP5ws+5zUmerFBlzZA=",
@@ -25,6 +85,48 @@
 			"path": "github.com/uber-go/zap",
 			"revision": "a5783ee4b216a927da8f839c45cfbf9d694e1467",
 			"revisionTime": "2016-12-22T04:03:04Z"
+		},
+		{
+			"checksumSHA1": "LTOa3BADhwvT0wFCknPueQALm8I=",
+			"path": "github.com/valyala/bytebufferpool",
+			"revision": "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7",
+			"revisionTime": "2016-08-17T18:16:52Z"
+		},
+		{
+			"checksumSHA1": "j7lWhgAteszPecjIkS12+tjXE2E=",
+			"path": "github.com/valyala/fasttemplate",
+			"revision": "d090d65668a286d9a180d43a19dfdc5dcad8fe88",
+			"revisionTime": "2017-01-12T11:45:30Z"
+		},
+		{
+			"checksumSHA1": "TK1Yr8BbwionaaAvM+77lwAAx/8=",
+			"path": "golang.org/x/crypto/acme",
+			"revision": "bed12803fa9663d7aa2c2346b0c634ad2dcd43b7",
+			"revisionTime": "2017-02-01T20:15:17Z"
+		},
+		{
+			"checksumSHA1": "MG1frAM4p4lg1ioOhUa7rjN3xm0=",
+			"path": "golang.org/x/crypto/acme/autocert",
+			"revision": "bed12803fa9663d7aa2c2346b0c634ad2dcd43b7",
+			"revisionTime": "2017-02-01T20:15:17Z"
+		},
+		{
+			"checksumSHA1": "Y+HGqEkYM15ir+J93MEaHdyFy0c=",
+			"path": "golang.org/x/net/context",
+			"revision": "007e530097ad7f954752df63046b4036f98ba6a6",
+			"revisionTime": "2017-02-01T22:13:12Z"
+		},
+		{
+			"checksumSHA1": "WHc3uByvGaMcnSoI21fhzYgbOgg=",
+			"path": "golang.org/x/net/context/ctxhttp",
+			"revision": "007e530097ad7f954752df63046b4036f98ba6a6",
+			"revisionTime": "2017-02-01T22:13:12Z"
+		},
+		{
+			"checksumSHA1": "uTQtOqR0ePMMcvuvAIksiIZxhqU=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "7a6e5648d140666db5d920909e082ca00a87ba2c",
+			"revisionTime": "2017-02-01T04:15:14Z"
 		},
 		{
 			"checksumSHA1": "MGk7cSnHqiL5soaovzgcJaNH3fc=",
