@@ -45,6 +45,9 @@ versions of external packages.
 A special docker container dkfbasel/hot-reload-go is provided for development.
 This container will auto-compile the go binary every time a file is changed.
 
+The package github.com/eirwin/stubble can be used to setup a simple json mock
+api for testing and initial frontend development.
+
 
 Vue.js
 ------
