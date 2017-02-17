@@ -25,4 +25,4 @@ WORKDIR /dkfbasel
 
 # START THE APPLICATION WITH THE CONTAINER
 # TODO: add the name of the binary to start
-CMD ["/dkfbasel/bind/[NAME OF THE BINARY]"]
+CMD ["/dkfbasel/bin/[NAME OF THE BINARY]"]
