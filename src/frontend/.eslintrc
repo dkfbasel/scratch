@@ -1,6 +1,5 @@
 {
     "ecmaFeatures": {
-        "jsx": true,
         "arrowFunctions": true,
         "modules": true,
         "destructuring": true,

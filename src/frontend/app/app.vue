@@ -1,20 +1,16 @@
 <style lang="stylus">
-	@require "./app.styl";
+	@require "./styles/app.styl"
 </style>
 
 <template>
-	<div id="test"><p>This is my {{ number }} template </p></div>
+	<div>
+		<header>-- UFO SIGHTINGS NEARBY ---</header>
+		<router-view></router-view>
+	</div>
 </template>
 
-<script lang="babel">
-
-	module.exports = {
-		name: 'app',
-		data() {
-			return {
-				number: 'first'
-			};
-		}
-	}
-
+<script>
+	export default {
+		name: 'App'
+	};
 </script>
