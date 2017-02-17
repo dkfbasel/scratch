@@ -6,16 +6,21 @@ frontend.
 Directory Structure
 -------------------
 ```
-- build:           all content required to build a docker binary
-- docs:            all documentation for the project
-- src:             the source code of the project
--- backend:        the go code for the backend (including tests)
---- vendor:        the vendored go dependencies
--- frontend:       the vue.js code for the frontend
---- app:           the main code for the frontend
---- build:         build directory for the frontend code
---- node_modules:  all required node_modules
-- test:            directory for integration tests, test databases or templates
+- build         // contains all information required to run the project in production
+    - bin       // contains all binaries to run the service
+    - public    // contains all files that should be served by the service
+    - templates // contains all templates required for the service
+
+- docs          // documentation and asset source files for the project
+
+- src           // contains all development information
+    - backend   // contains the golang code for the web server		 
+    - frontend  // contains the web application front-end source code
+    - docker-compose.yml    // configuration for development containers
+
+- test          // directory for separate test data and integration tests
+
+- readme.md     // readme file for every project
 ```
 
 Golang Tools
