@@ -7,7 +7,7 @@ networks:
 services:
 
     api:
-        image: dkfbasel/hot-reload-go:1.2.0
+        image: dkfbasel/hot-reload-go:1.8.0
         networks: [dkfbasel]
         ports:
             - 3002:80
@@ -20,7 +20,7 @@ services:
             - HOST=0.0.0.0:80
 
     frontend:
-        image: dkfbasel/hot-reload-webpack:3.0.0
+        image: dkfbasel/hot-reload-webpack:3.1.0
         networks: [dkfbasel]
         ports:
             - 3000:3000
