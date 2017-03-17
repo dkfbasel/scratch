@@ -5,20 +5,22 @@ var autoprefixer = require('autoprefixer');
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-require('babel-polyfill');
-
 // note: we prefer using includes over excludes, as this will give us finer
 // control over what is actually transpiled
 var appDirectory = path.resolve(__dirname, 'app');
 var includes = [appDirectory];
 
-module.exports = {
+// specify the configuration to use for developnet
+var developConfig = {
+	// use the dev server included with webpack for live-reload development
+	// note: that the port and host can be changed here if require
 	devServer: {
 		contentBase: '/tmp/public',
 		historyApiFallback: true,
 		noInfo: true,
 		host: '0.0.0.0',
 		port: 3000,
+		// proxy api calls to a container named api
 		proxy: {
 			'/api/**': {
 				target: 'http://api',
@@ -40,7 +42,9 @@ module.exports = {
 	performance: {
 		hints: false
 	},
-	devtool: '#eval-source-map',
+	devtool: '#cheap-module-eval-source-map',
+
+	// define the entry point of the application
 	entry: {
 		app: [path.resolve(__dirname, 'app/main.js')]
 	},
@@ -57,34 +61,28 @@ module.exports = {
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						stylus: ExtractTextPlugin.extract({
-							use: ['css-loader', 'stylus-loader'],
-							fallback: 'vue-style-loader'
-						})
+						stylus: 'vue-style-loader!css-loader!stylus-loader',
+						styl: 'vue-style-loader!css-loader!stylus-loader',
+						js: 'babel-loader'
 					}
 				},
+				include: includes
+			}, {
+				// parse javascript files (use babel to transpile)
+				// note that presets and plugins must be defined as plugin
+				// settings (at least for now)
+				test: /\.js$/,
+				loader: 'babel-loader',
+				include: includes
+			},  {
+				// parse stylus styles
+				test: /\.styl$/,
+				use: ['style-loader', 'css-loader', 'stylus-loader'],
 				include: includes
 			}, {
 				// parse css styles
 				test: /\.css$/,
 				use: ['style-loader','css-loader','postcss-loader'],
-				include: includes
-			}, {
-				// parse javascript files (use babel to transpile)
-				test: /\.js$/,
-				loader: 'babel-loader',
-				query: {
-					presets: ['es2015', 'stage-0'],
-					plugins: ['transform-runtime']
-				},
-				include: includes
-			}, {
-				// parse stylus styles
-				test: /\.styl$/,
-				loader: ExtractTextPlugin.extract({
-					use: ['css-loader', 'stylus-loader'],
-					fallback: 'style-loader'
-				}),
 				include: includes
 			}
 		]
@@ -92,36 +90,79 @@ module.exports = {
 	resolve: {
 		alias: {
 			// resolve vue to non minified bundle for development
-			vue: 'vue/dist/vue.js'
+			vue: 'vue/dist/vue.common.js'
 		}
-	},
-	plugins: [
-		// extract all styles into one single css file
-		new ExtractTextPlugin({
-			filename: 'app.css',
-			allChunks: true
-		})
-	]
+	}
 };
 
-
-if (process.env.NODE_ENV === 'production') {
-	module.exports.devtool = '#source-map';
-
-	// use babel polyfill for production builds (for ie support)
-	module.exports.entry = {
+// specify configuration to be used to build for production
+var buildConfig = {
+	// add babel polyfill to support older browsers
+	entry: {
 		app: ['babel-polyfill', path.resolve(__dirname, 'app/main.js')]
 	},
-
-	// resolve vue to the minified module
-	module.exports.resolve = {},
-
-	// http://vue-loader.vuejs.org/en/workflow/production.html
-	module.exports.plugins = (module.exports.plugins || []).concat([
+	// use the same configuration for the output as in dev mode
+	output: developConfig.output,
+	// generate source maps for the code
+	devtool: '#source-map',
+	// specify the module configuration
+	module: {
+		rules: [
+			{
+				// parse vue components
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					loaders: {
+						stylus: ExtractTextPlugin.extract({
+							use: ['css-loader', 'stylus-loader'],
+							fallback: 'vue-style-loader'
+						}),
+						styl: ExtractTextPlugin.extract({
+							use: ['css-loader', 'stylus-loader'],
+							fallback: 'vue-style-loader'
+						}),
+						js: 'babel-loader'
+					}
+				},
+				include: includes
+			}, {
+				// parse javascript files (use babel to transpile)
+				// note that presets and plugins must be defined as plugin
+				// settings (at least for now)
+				test: /\.js$/,
+				loader: 'babel-loader',
+				include: includes
+			},  {
+				// parse stylus styles
+				test: /\.styl$/,
+				loader: ExtractTextPlugin.extract({
+					use: ['css-loader', 'stylus-loader'],
+					fallback: 'style-loader'
+				}),
+				include: includes
+			}, {
+				// parse css styles
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract({
+					use: ['css-loader', 'postcss-loader'],
+					fallback: 'style-loader'
+				}),
+				include: includes
+			}
+		]
+	},
+	// define plugins to use
+	plugins: [
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"'
 			}
+		}),
+		// extract all styles into one single css file
+		new ExtractTextPlugin({
+			filename: 'app.css',
+			allChunks: true
 		}),
 		// use babel to transpile js code
 		new webpack.LoaderOptionsPlugin({
@@ -130,6 +171,7 @@ if (process.env.NODE_ENV === 'production') {
 			options: {
 				// babel needs to set the context path here!
 				context: __dirname,
+				// babel presets and plugins need to be specified here
 				babel: {
 					presets: ['es2015', 'stage-0'],
 					plugins: ['transform-runtime']
@@ -154,5 +196,19 @@ if (process.env.NODE_ENV === 'production') {
 				comments: false
 			}
 		})
-	]);
+	]
+};
+
+
+// override some build config to extract the text
+
+// use specific configuration depending on build mode
+if (process.env.NODE_ENV !== 'production') {
+	console.log('-- using development config');
+	module.exports = developConfig;
+
+} else {
+	console.log('-- using production config');
+	module.exports = buildConfig;
+
 }
