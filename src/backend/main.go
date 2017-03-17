@@ -1,13 +1,15 @@
 package main
 
 import (
+	"log"
+
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
 	"bitbucket.org/dkfbasel/scratch/src/backend/repository"
 	"bitbucket.org/dkfbasel/scratch/src/backend/sampleHandlers"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/uber-go/zap"
+	"go.uber.org/zap"
 )
 
 func main() {
@@ -15,11 +17,19 @@ func main() {
 	// initialize the environment
 	env := environment.Items{}
 
-	// initialize a new logger
-	env.Logger = zap.New(zap.NewJSONEncoder(zap.NoTime()))
-
 	// initialize a default error variable
 	var err error
+
+	// initialize a new logger
+	env.Logger, err = zap.NewProduction()
+	if err != nil {
+		log.Println("could not initialize the logger")
+	}
+
+	testLogger := env.Logger.With(zap.String("user", "testuser"))
+
+	testLogger.Info("this is a sample setup")
+	testLogger.Debug("debug information is not shown in production setting")
 
 	// load the configuration
 	env.Config, err = environment.LoadConfiguration("config.yaml")

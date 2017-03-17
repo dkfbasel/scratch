@@ -6,7 +6,7 @@ import (
 
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
 	"github.com/labstack/echo"
-	"github.com/uber-go/zap"
+	"go.uber.org/zap"
 )
 
 // GetSample will return the sample value to the given id

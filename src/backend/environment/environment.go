@@ -3,7 +3,7 @@ package environment
 import (
 	"bitbucket.org/dkfbasel/scratch/src/backend/repository"
 	"github.com/jinzhu/configor"
-	"github.com/uber-go/zap"
+	"go.uber.org/zap"
 )
 
 // --- Globally available items ---
@@ -11,7 +11,7 @@ import (
 // Items is used for globally necessary items
 type Items struct {
 	// define a global logger
-	Logger zap.Logger
+	Logger *zap.Logger
 
 	// make the configuration available globally
 	Config Configuration

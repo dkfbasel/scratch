@@ -7,7 +7,7 @@ import (
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
 	"github.com/labstack/echo"
 	"github.com/pkg/errors"
-	"github.com/uber-go/zap"
+	"go.uber.org/zap"
 )
 
 // ErrorExample will return an error
