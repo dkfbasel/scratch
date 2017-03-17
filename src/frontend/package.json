@@ -1,6 +1,6 @@
 {
   "name": "dkfbasel-scratch",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Scratch project template by the Department of Clinical Research Basel",
   "author": "Department of Clinical Research, University Hospital Basel",
   "scripts": {
@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "axios": "0.15.3",
-    "vue": "2.1.10",
-    "vue-router": "^2.2.1",
-    "vuex": "^2.1.2",
+    "vue": "^2.2.4",
+    "vue-router": "^2.3.0",
+    "vuex": "^2.2.1",
     "vuex-router-sync": "^4.1.2"
   }
 }
