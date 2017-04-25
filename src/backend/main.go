@@ -5,7 +5,7 @@ import (
 
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
 	"bitbucket.org/dkfbasel/scratch/src/backend/repository"
-	"bitbucket.org/dkfbasel/scratch/src/backend/sampleHandlers"
+	"bitbucket.org/dkfbasel/scratch/src/backend/samplehandlers"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -55,11 +55,11 @@ func main() {
 	router.Use(middleware.Secure())
 
 	// default router
-	router.GET("/", sampleHandlers.HelloWorld)
-	router.GET("/err", sampleHandlers.ErrorExample(env))
+	router.GET("/", samplehandlers.HelloWorld)
+	router.GET("/err", samplehandlers.ErrorExample(env))
 
-	router.GET("/set/:id/:value", sampleHandlers.SetSample(env))
-	router.GET("/get/:id", sampleHandlers.GetSample(env))
+	router.GET("/set/:id/:value", samplehandlers.SetSample(env))
+	router.GET("/get/:id", samplehandlers.GetSample(env))
 
 	// start the server
 	err = router.Start(env.Config.Host)
