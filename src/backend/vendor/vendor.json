@@ -3,22 +3,16 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "F6GCLoORCK5o/lmSTA+in1JrHCQ=",
-			"path": "github.com/BurntSushi/toml",
-			"revision": "e643e9ef00b049d75de26e61109c5ea01885cd21",
-			"revisionTime": "2017-03-07T03:38:02Z"
-		},
-		{
 			"checksumSHA1": "2Fy1Y6Z3lRRX1891WF/+HT4XS2I=",
 			"path": "github.com/dgrijalva/jwt-go",
 			"revision": "2268707a8f0843315e2004ee4f1d021dc08baedf",
 			"revisionTime": "2017-02-01T22:58:49Z"
 		},
 		{
-			"checksumSHA1": "ei/FyAed4h941oj3zucBQx6NNEA=",
-			"path": "github.com/jinzhu/configor",
-			"revision": "b7df2005e02e9226447139012db968eda90a4b91",
-			"revisionTime": "2017-01-13T15:44:04Z"
+			"checksumSHA1": "gWlw0l2wMBLhmejJCTr/Zywqyk8=",
+			"path": "github.com/kelseyhightower/envconfig",
+			"revision": "b6fde1625d631a48340817849a547164f395d9eb",
+			"revisionTime": "2017-04-24T16:37:37Z"
 		},
 		{
 			"checksumSHA1": "7rUfphht9/t/HCY41POCMGdPgL8=",
@@ -163,12 +157,6 @@
 			"path": "golang.org/x/sys/unix",
 			"revision": "99f16d856c9836c42d24e7ab64ea72916925fa97",
 			"revisionTime": "2017-03-08T15:04:45Z"
-		},
-		{
-			"checksumSHA1": "MGk7cSnHqiL5soaovzgcJaNH3fc=",
-			"path": "gopkg.in/yaml.v1",
-			"revision": "9f9df34309c04878acc86042b16630b0f696e1de",
-			"revisionTime": "2014-09-24T16:16:07Z"
 		}
 	],
 	"rootPath": "bitbucket.org/dkfbasel/scratch/src/backend"

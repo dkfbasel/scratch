@@ -2,8 +2,8 @@ package environment
 
 import (
 	"bitbucket.org/dkfbasel/scratch/src/backend/repository"
-	"github.com/jinzhu/configor"
 	"go.uber.org/zap"
+	"github.com/kelseyhightower/envconfig"
 )
 
 // --- Globally available items ---
@@ -24,14 +24,14 @@ type Items struct {
 
 // Configuration is used to hold basic application configuration
 type Configuration struct {
-	Host       string `default:"0.0.0.0:80" env:"HOST"`
-	RequestLog bool   `default:"false" env:"REQUEST_LOG"`
+	Host       string `default:"0.0.0.0:80"`
+	RequestLog bool   `default:"false"`
 }
 
 // LoadConfiguration will load the basic application configuration from the
 // specified config file
-func LoadConfiguration(filepath string) (Configuration, error) {
+func LoadConfiguration(prefix string) (Configuration, error) {
 	config := Configuration{}
-	err := configor.Load(&config, filepath)
+	err := envconfig.Process(prefix, &config)
 	return config, err
 }

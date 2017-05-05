@@ -32,7 +32,7 @@ func main() {
 	testLogger.Debug("debug information is not shown in production setting")
 
 	// load the configuration
-	env.Config, err = environment.LoadConfiguration("config.yaml")
+	env.Config, err = environment.LoadConfiguration("scratch")
 	if err != nil {
 		env.Logger.Fatal("configuration could not be loaded", zap.Error(err))
 	}
