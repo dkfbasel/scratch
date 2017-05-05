@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
+	"bitbucket.org/dkfbasel/scratch/src/backend/logger"
 	"github.com/labstack/echo"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
@@ -17,7 +18,7 @@ func ErrorExample(env environment.Spec) echo.HandlerFunc {
 
 		value, err := returnAnError("my sample value")
 		if err != nil {
-			env.Logger.Error("errorExample request did not work", zap.Error(err))
+			logger.Zap().Error("errorExample request did not work", zap.Error(err))
 			return echo.NewHTTPError(http.StatusInternalServerError, "sorry. something did not work")
 		}
 

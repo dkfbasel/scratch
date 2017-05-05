@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
+	"bitbucket.org/dkfbasel/scratch/src/backend/logger"
 	"github.com/labstack/echo"
 	"go.uber.org/zap"
 )
@@ -38,7 +39,7 @@ func SetSample(env environment.Spec) echo.HandlerFunc {
 
 		err := env.SampleDB.Set(sampleID, sampleValue)
 		if err != nil {
-			env.Logger.Error("setSampleRequest failed", zap.Error(err))
+			logger.Zap().Error("setSampleRequest failed", zap.Error(err))
 			return echo.NewHTTPError(http.StatusBadRequest, "could not set the value")
 		}
 

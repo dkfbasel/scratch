@@ -2,16 +2,10 @@ package environment
 
 import (
 	"bitbucket.org/dkfbasel/scratch/src/backend/repository"
-	"go.uber.org/zap"
 	"github.com/kelseyhightower/envconfig"
 )
 
 // --- Globally available items ---
-
-// Items is used for globally necessary items
-type Items struct {
-	// define a global logger
-	Logger *zap.Logger
 
 // Spec is used for globally necessary items
 type Spec struct {
