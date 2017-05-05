@@ -31,7 +31,7 @@ func TestSampleHandlers(t *testing.T) {
 
 	// env.SampleDB = &mockDB{}
 	env.SampleDB, _ = repository.NewSampleDB()
-	env.SampleDB.Set("sampleid", "my-sample-value")
+	env.SampleDB.Set("sampleid", "my-sample-value") // nolint: errcheck
 
 	Convey("Given a running server", t, func() {
 
