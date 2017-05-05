@@ -17,8 +17,25 @@ services:
 
         environment:
             - PROJECT=bitbucket.org/dkfbasel/scratch/src/backend
-            - HOST=0.0.0.0:80
             - CMD=build
+            - DEBUG=true
+            - SCRATCH_HOST=0.0.0.0:80
+            - SCRATCH_REQUESTLOG=true
+
+    test:
+        image: dkfbasel/hot-reload-go:1.8.1
+        networks: [dkfbasel]
+        ports:
+            - 3004:8080
+        volumes:
+            # note that the package must be linked into the gopath directory
+            # directly for the goconvey watcher to work
+            - ./backend:/go/src/bitbucket.org/dkfbasel/scratch/src/backend
+            - ../build/templates:/tmp/templates
+
+        environment:
+            - PROJECT=bitbucket.org/dkfbasel/scratch/src/backend
+            - CMD=goconvey
 
     frontend:
         image: dkfbasel/hot-reload-webpack:3.1.0
