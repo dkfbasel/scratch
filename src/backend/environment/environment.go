@@ -13,6 +13,8 @@ type Items struct {
 	// define a global logger
 	Logger *zap.Logger
 
+// Spec is used for globally necessary items
+type Spec struct {
 	// make the configuration available globally
 	Config Configuration
 

@@ -11,7 +11,7 @@ import (
 )
 
 // ErrorExample will return an error
-func ErrorExample(env environment.Items) echo.HandlerFunc {
+func ErrorExample(env environment.Spec) echo.HandlerFunc {
 
 	return func(ctx echo.Context) error {
 

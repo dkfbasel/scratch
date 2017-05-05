@@ -10,7 +10,7 @@ import (
 )
 
 // GetSample will return the sample value to the given id
-func GetSample(env environment.Items) echo.HandlerFunc {
+func GetSample(env environment.Spec) echo.HandlerFunc {
 
 	return func(ctx echo.Context) error {
 		sampleID := ctx.Param("id")
@@ -25,7 +25,7 @@ func GetSample(env environment.Items) echo.HandlerFunc {
 }
 
 // SetSample will set the value for the given key
-func SetSample(env environment.Items) echo.HandlerFunc {
+func SetSample(env environment.Spec) echo.HandlerFunc {
 
 	return func(ctx echo.Context) error {
 

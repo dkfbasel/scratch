@@ -15,7 +15,7 @@ import (
 func main() {
 
 	// initialize the environment
-	env := environment.Items{}
+	env := environment.Spec{}
 
 	// initialize a default error variable
 	var err error

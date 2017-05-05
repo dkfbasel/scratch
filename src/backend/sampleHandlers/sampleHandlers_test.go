@@ -27,7 +27,7 @@ func (*mockDB) Set(sampleID, value string) error {
 
 func TestSampleHandlers(t *testing.T) {
 
-	env := environment.Items{}
+	env := environment.Spec{}
 
 	// env.SampleDB = &mockDB{}
 	env.SampleDB, _ = repository.NewSampleDB()
