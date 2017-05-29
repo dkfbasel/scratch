@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"flag"
 	"os"
 
 	"go.uber.org/zap"
@@ -10,12 +11,31 @@ var logger *zap.Logger
 
 func init() {
 
-	debug := os.Getenv("DEBUG")
+	// get the debugging env config
+	debugMode := os.Getenv("DEBUG")
 
-	// define a looger
-	if debug == "true" {
+	// get the logging env config
+	logLevel := os.Getenv("LOGLEVEL")
+
+	// use the test logging mode if started with go test and no logging mode specified
+	if logLevel == "" && flag.Lookup("test.v") != nil {
+		logLevel = "test"
+	}
+
+	// use the debug logging mode if started in debug mode and no logging mode specified
+	if logLevel == "" && debugMode == "true" {
+		logLevel = "debug"
+	}
+
+	// use different logging output depending on configuration
+	switch logLevel {
+	case "debug":
 		logger, _ = zap.NewDevelopment()
-	} else {
+
+	case "test":
+		logger = zap.NewNop()
+
+	default:
 		logger, _ = zap.NewProduction()
 	}
 
