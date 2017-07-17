@@ -38,7 +38,7 @@ services:
             - CMD=goconvey
 
     frontend:
-        image: dkfbasel/hot-reload-webpack:3.1.0
+        image: dkfbasel/hot-reload-webpack:4.0.0
         networks: [dkfbasel]
         ports:
             - 3000:3000
