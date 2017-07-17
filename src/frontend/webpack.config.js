@@ -19,6 +19,7 @@ var developConfig = {
 		historyApiFallback: true,
 		noInfo: true,
 		host: '0.0.0.0',
+		overlay: true,
 		port: 3000,
 		// proxy api calls to a container named api
 		proxy: {
