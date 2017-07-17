@@ -174,29 +174,11 @@ var buildConfig = {
 				context: __dirname,
 				// babel presets and plugins need to be specified here
 				babel: {
-					presets: ['es2015', 'stage-0'],
+					presets: ['es2015', 'stage-0','babili'],
 					plugins: ['transform-runtime']
 				}
 			}
 		}),
-		// use uglify for minification
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false,
-				screw_ie8: true,
-				conditionals: true,
-				unused: true,
-				comparisons: true,
-				sequences: true,
-				dead_code: true,
-				evaluate: true,
-				if_return: true,
-				join_vars: true
-			},
-			output: {
-				comments: false
-			}
-		})
 	]
 };
 
