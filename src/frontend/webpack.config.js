@@ -179,6 +179,9 @@ var buildConfig = {
 				}
 			}
 		}),
+		// new scope hoisting feature in webpack 3
+		new webpack.optimize.ModuleConcatenationPlugin()
+
 	]
 };
 
