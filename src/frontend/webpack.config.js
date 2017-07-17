@@ -50,7 +50,7 @@ var developConfig = {
 		app: [path.resolve(__dirname, 'app/main.js')]
 	},
 	output: {
-		path: '/tmp/build/assets',
+		path: '/tmp/public/assets',
 		filename: '[name].bundle.js',
 		publicPath: '/assets/'
 	},
