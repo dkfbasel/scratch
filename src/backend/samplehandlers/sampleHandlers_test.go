@@ -1,4 +1,4 @@
-package sampleHandlers_test
+package samplehandlers_test
 
 import (
 	"net/http"
@@ -7,7 +7,7 @@ import (
 
 	"bitbucket.org/dkfbasel/scratch/src/backend/environment"
 	"bitbucket.org/dkfbasel/scratch/src/backend/repository"
-	"bitbucket.org/dkfbasel/scratch/src/backend/sampleHandlers"
+	"bitbucket.org/dkfbasel/scratch/src/backend/samplehandlers"
 
 	"github.com/labstack/echo"
 	. "github.com/smartystreets/goconvey/convey"
@@ -44,7 +44,7 @@ func TestSampleHandlers(t *testing.T) {
 
 			ctx.SetParamNames("id")
 			ctx.SetParamValues("sampleid")
-			handler := sampleHandlers.GetSample(env)
+			handler := samplehandlers.GetSample(env)
 			err := handler(ctx)
 
 			So(err, ShouldBeNil)
@@ -62,7 +62,7 @@ func TestSampleHandlers(t *testing.T) {
 			ctx.SetParamNames("id")
 			ctx.SetParamValues("no-exist")
 
-			getHandler := sampleHandlers.GetSample(env)
+			getHandler := samplehandlers.GetSample(env)
 			err := getHandler(ctx)
 			So(err, ShouldBeNil)
 			So(recorder.Body.String(), ShouldBeEmpty)
@@ -70,7 +70,7 @@ func TestSampleHandlers(t *testing.T) {
 			ctx = router.NewContext(request, recorder)
 			ctx.SetParamNames("id", "value")
 			ctx.SetParamValues("no-exist", "now I exist")
-			setHandler := sampleHandlers.SetSample(env)
+			setHandler := samplehandlers.SetSample(env)
 			err = setHandler(ctx)
 			So(err, ShouldBeNil)
 

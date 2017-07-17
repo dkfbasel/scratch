@@ -1,11 +1,11 @@
-package sampleHandlers_test
+package samplehandlers_test
 
 import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
-	"bitbucket.org/dkfbasel/scratch/src/backend/sampleHandlers"
+	"bitbucket.org/dkfbasel/scratch/src/backend/samplehandlers"
 
 	"github.com/labstack/echo"
 	. "github.com/smartystreets/goconvey/convey"
@@ -23,7 +23,7 @@ func TestHelloWord(t *testing.T) {
 			ctx := router.NewContext(request, recorder)
 
 			ctx.SetPath("/")
-			err := sampleHandlers.HelloWorld(ctx)
+			err := samplehandlers.HelloWorld(ctx)
 
 			So(err, ShouldBeNil)
 			So(recorder.Body.String(), ShouldEqual, "Greetings Earthlings!")
