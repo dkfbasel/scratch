@@ -7,7 +7,7 @@ networks:
 services:
 
     api:
-        image: dkfbasel/hot-reload-go:1.8.1
+        image: dkfbasel/hot-reload-go:1.9.2
         networks: [dkfbasel]
         ports:
             - 3002:80
@@ -23,7 +23,7 @@ services:
             - SCRATCH_REQUESTLOG=true
 
     test:
-        image: dkfbasel/hot-reload-go:1.8.1
+        image: dkfbasel/hot-reload-go:1.9.2
         networks: [dkfbasel]
         ports:
             - 3004:8080
@@ -38,7 +38,7 @@ services:
             - CMD=goconvey
 
     frontend:
-        image: dkfbasel/hot-reload-webpack:4.0.0
+        image: dkfbasel/hot-reload-webpack:5.0.0
         networks: [dkfbasel]
         ports:
             - 3000:3000
