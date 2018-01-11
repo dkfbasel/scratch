@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var poststylus = require('poststylus');
 var autoprefixer = require('autoprefixer');
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -56,15 +55,27 @@ var developConfig = {
 	},
 	module: {
 		rules: [
+			// only lint local *.vue files
+			// {
+			// 	enforce: 'pre',
+			// 	test: /\.vue$/,
+			// 	loader: 'eslint-loader',
+			// 	include: includes
+			// },
 			{
 				// parse vue components
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: {
+					// define loaders to enable stylus parsing
 					loaders: {
 						stylus: 'vue-style-loader!css-loader!stylus-loader',
-						styl: 'vue-style-loader!css-loader!stylus-loader',
-						js: 'babel-loader'
+						js: 'buble-loader'
+					},
+					// set configuration for css modules
+					cssModules: {
+						localIdentName: '[path][name]---[local]---[hash:base64:5]',
+						camelCase: true
 					}
 				},
 				include: includes
@@ -89,6 +100,11 @@ var developConfig = {
 		]
 	},
 	resolve: {
+		modules: [
+			'/usr/local/lib/node_modules',
+			'node_modules',
+			appDirectory
+		],
 		alias: {
 			// resolve vue to non minified bundle for development
 			vue: 'vue/dist/vue.common.js'
@@ -98,33 +114,40 @@ var developConfig = {
 
 // specify configuration to be used to build for production
 var buildConfig = {
+
 	// add babel polyfill to support older browsers
 	entry: {
 		app: ['babel-polyfill', path.resolve(__dirname, 'app/main.js')]
 	},
+
 	// use the same configuration for the output as in dev mode
 	output: developConfig.output,
-	// generate source maps for the code
-	devtool: '#source-map',
+	// do not generate sourcde maps,
+	// use #source-map to generate source maps for the code
+	devtool: '#none',
+
 	// specify the module configuration
 	module: {
 		rules: [
+			// only lint local *.vue files
+			// {
+			// 	enforce: 'pre',
+			// 	test: /\.vue$/,
+			// 	loader: 'eslint-loader',
+			// 	include: includes
+			// },
 			{
 				// parse vue components
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						stylus: ExtractTextPlugin.extract({
-							use: ['css-loader', 'stylus-loader'],
-							fallback: 'vue-style-loader'
-						}),
-						styl: ExtractTextPlugin.extract({
-							use: ['css-loader', 'stylus-loader'],
-							fallback: 'vue-style-loader'
-						}),
-						js: 'babel-loader'
-					}
+						stylus: 'vue-style-loader!css-loader!stylus-loader'
+					},
+					postLoaders: {
+						html: 'buble-loader'
+					},
+					extractCSS: true
 				},
 				include: includes
 			}, {
@@ -155,30 +178,19 @@ var buildConfig = {
 	},
 	// define plugins to use
 	plugins: [
+
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"'
 			}
 		}),
+
 		// extract all styles into one single css file
 		new ExtractTextPlugin({
 			filename: 'app.css',
 			allChunks: true
 		}),
-		// use babel to transpile js code
-		new webpack.LoaderOptionsPlugin({
-			minimize: true,
-			debug: false,
-			options: {
-				// babel needs to set the context path here!
-				context: __dirname,
-				// babel presets and plugins need to be specified here
-				babel: {
-					presets: ['es2015', 'stage-0','babili'],
-					plugins: ['transform-runtime']
-				}
-			}
-		}),
+
 		// new scope hoisting feature in webpack 3
 		new webpack.optimize.ModuleConcatenationPlugin()
 
