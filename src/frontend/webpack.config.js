@@ -27,6 +27,13 @@ var developConfig = {
 				secure: false
 			}
 		},
+		// make sure that compiled css is not applied in development
+		before(app) {
+			app.get('/assets/*.css', function(req, res) {
+				res.setHeader('Content-Type', 'text/css');
+				res.send('');
+			});
+		},
 		stats: {
 			assets: true,
 			children: false,
@@ -69,8 +76,7 @@ var developConfig = {
 				options: {
 					// define loaders to enable stylus parsing
 					loaders: {
-						stylus: 'vue-style-loader!css-loader!stylus-loader',
-						js: 'buble-loader'
+						stylus: 'vue-style-loader!css-loader!stylus-loader'
 					},
 					// set configuration for css modules
 					cssModules: {
@@ -124,7 +130,7 @@ var buildConfig = {
 	output: developConfig.output,
 	// do not generate sourcde maps,
 	// use #source-map to generate source maps for the code
-	devtool: '#none',
+	devtool: '#source-map',
 
 	// specify the module configuration
 	module: {
@@ -143,9 +149,6 @@ var buildConfig = {
 				options: {
 					loaders: {
 						stylus: 'vue-style-loader!css-loader!stylus-loader'
-					},
-					postLoaders: {
-						html: 'buble-loader'
 					},
 					extractCSS: true
 				},
